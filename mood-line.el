@@ -207,6 +207,11 @@
   :group 'mood-line
   :type 'boolean)
 
+(defcustom mood-line-icon-function nil
+  "Function to insert the name of the major mode as an icon."
+  :group 'mood-line
+  :type 'function)
+
 (defcustom mood-line-glyph-alist mood-line-glyphs-ascii
   "Alist mapping glyph names to characters used to draw some mode line segments.
 
@@ -754,8 +759,11 @@ Checkers checked, in order: `flycheck', `flymake'."
 (defun mood-line-segment-major-mode ()
   "Display the name of the major mode of the current buffer."
   (when mood-line-show-major-mode
-    (concat (propertize (substring-no-properties (format-mode-line mode-name))
-                        'face 'mood-line-major-mode)
+    (concat (condition-case nil
+                (funcall mood-line-icon-function)
+              (error (propertize
+                      (substring-no-properties (format-mode-line mode-name))
+                      'face 'mood-line-major-mode)))
             "  ")))
 
 ;; ---------------------------------- ;;
