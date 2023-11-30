@@ -853,11 +853,11 @@ Checkers checked, in order: `flycheck', `flymake'."
                      '((:eval (mood-line-segment-indentation))
                        (:eval (mood-line-segment-eol))
                        (:eval (mood-line-segment-encoding))
-                       (:eval (mood-line-segment-vc))
-                       (:eval (mood-line-segment-major-mode))
                        (:eval (mood-line-segment-misc-info))
                        (:eval (mood-line-segment-checker))
                        (:eval (mood-line-segment-process))
+                       (:eval (mood-line-segment-vc))
+                       (:eval (mood-line-segment-major-mode))
                        " ")))))))
 
 ;; ---------------------------------- ;;
