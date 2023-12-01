@@ -528,29 +528,29 @@ Counts will be returned in an alist as the `cdr' of the following keys:
              (cond
               ((> .error-count 0)
                (format #("%s %s Issue%s  "
-                         0 2 (face mood-line-status-error))
+                         0 12 (face mood-line-status-error))
                        (mood-line--get-glyph :checker-issues)
                        .issue-count
                        (if (> .issue-count 1) "s" "")))
               ((> .warning-count 0)
                (format #("%s %s Issue%s  "
-                         0 2 (face mood-line-status-warning))
+                         0 12 (face mood-line-status-warning))
                        (mood-line--get-glyph :checker-issues)
                        .issue-count
                        (if (> .issue-count 1) "s" "")))
               ((> .note-count 0)
                (format #("%s %s Note%s  "
-                         0 2 (face mood-line-status-info))
+                         0 12 (face mood-line-status-info))
                        (mood-line--get-glyph :checker-info)
                        .note-count
                        (if (> .note-count 1) "s" "")))
               ((zerop .all-count)
-               (format #("%s No Issues  "
-                         0 12 (face mood-line-status-neutral))
+               (format #("%s Good  "
+                         0 8 (face mood-line-status-success))
                        (mood-line--get-glyph :checker-good))))))
           ('running
            (format #("%s Checking  "
-                     0 12 (face mood-line-status-neutral))
+                     0 12 (face mood-line-status-info))
                    (mood-line--get-glyph :checker-checking)))
           ('errored
            (propertize (concat (mood-line--get-glyph :checker-errored)
